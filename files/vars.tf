@@ -1,9 +1,13 @@
 variable "labRole" {
-  default = "arn:aws:iam::094091489187:role/LabRole"
+  default = "arn:aws:iam::590183826114:role/LabRole"
 }
 
 variable "principalArn" {
-  default = "arn:aws:iam::094091489187:role/voclabs"
+  default = "arn:aws:iam::590183826114:role/voclabs"
+}
+
+variable "ecsTaskDefinition" {
+  default = "arn:aws:iam::590183826114:role/ecsTaskExecutionRole"
 }
 
 variable "policyArn" {
@@ -94,5 +98,5 @@ variable "autoscale_max" {
 }
 variable "autoscale_desired" {
   description = "Desired autoscale (number of EKS)"
-  default     = "q"
+  default     = "1"
 }

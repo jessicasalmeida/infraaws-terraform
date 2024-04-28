@@ -19,7 +19,7 @@ resource "aws_subnet" "public-subnet-1" {
 }
 resource "aws_subnet" "public-subnet-2" {
   tags = {
-    Name = "public-terraform-lab-subnet-2"
+    Name = "public-restaurante-subnet-2"
   }
   cidr_block        = var.public_subnet_2_cidr
   vpc_id            = aws_vpc.restaurante-vpc.id
@@ -29,7 +29,7 @@ resource "aws_subnet" "public-subnet-2" {
 # Private subnets
 resource "aws_subnet" "private-subnet-1" {
   tags = {
-    Name = "private-terraform-lab-subnet-1"
+    Name = "private-restaurante-subnet-1"
   }
   cidr_block        = var.private_subnet_1_cidr
   vpc_id            = aws_vpc.restaurante-vpc.id
@@ -37,7 +37,7 @@ resource "aws_subnet" "private-subnet-1" {
 }
 resource "aws_subnet" "private-subnet-2" {
   tags = {
-    Name = "private-terraform-lab-subnet-2"
+    Name = "private-restaurante-subnet-2"
   }
   cidr_block        = var.private_subnet_2_cidr
   vpc_id            = aws_vpc.restaurante-vpc.id
@@ -54,7 +54,7 @@ resource "aws_internet_gateway" "restaurante-vpc-igw" {
 
 # NAT Gateway for the public subnet
 resource "aws_eip" "nat_gateway" {
-  vpc                       = true
+  domain                       = "vpc"
   associate_with_private_ip = "10.0.0.5"
   depends_on                = [aws_internet_gateway.restaurante-vpc-igw]
 }

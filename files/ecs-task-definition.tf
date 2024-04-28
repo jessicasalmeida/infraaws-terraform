@@ -1,7 +1,7 @@
 resource "aws_ecs_task_definition" "ecs_task_definition" {
   family             = "restaurante-ecs-task"
   network_mode       = "awsvpc"
-  execution_role_arn = var.principalArn
+  execution_role_arn = var.labRole
   requires_compatibilities = ["FARGATE"]
   cpu                = 256
   memory             = 512
@@ -21,6 +21,32 @@ resource "aws_ecs_task_definition" "ecs_task_definition" {
           containerPort = 3000
           hostPort      = 3000
           protocol      = "tcp"
+        }
+      ]
+      environment = [
+        {
+          name  = "DB_CONN_STRING"
+          value = "mongodb://root:MongoDB2019!@mongo:27017/"
+        },
+        {
+          name  = "DB_NAME"
+          value = "restaurante_db"
+        },
+        {
+          name  = "CART_COLLECTION_NAME"
+          value = "cart"
+        },
+        {
+          name  = "ORDER_COLLECTION_NAME"
+          value = "order"
+        },
+        {
+          name  = "PRODUCT_COLLECTION_NAME"
+          value = "produtos"
+        },
+        {
+          name  = "USER_COLLECTION_NAME"
+          value = "user"
         }
       ]
     }
