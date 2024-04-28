@@ -1,30 +1,3 @@
-resource "aws_security_group" "eks" {
-  name        = "restaurante-sg"
-  description = "Allow traffic"
-  vpc_id      = aws_vpc.restaurante-vpc.id
-
-  ingress {
-    description      = "World"
-    from_port        = 0
-    to_port          = 0
-    protocol         = "-1"
-    cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
-  }
-
-  egress {
-    from_port        = 0
-    to_port          = 0
-    protocol         = "-1"
-    cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
-  }
-
-  tags = {
-    Name = "restaurante-sg"
-  }
-}
-
 module "eks" {
   source = "terraform-aws-modules/eks/aws"
   version = "19.0.4"
