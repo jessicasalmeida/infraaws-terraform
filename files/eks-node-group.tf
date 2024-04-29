@@ -1,3 +1,4 @@
+/*
 resource "aws_eks_node_group" "node" {
   cluster_name    = aws_eks_cluster.restaurante-cluster.name
   node_group_name = var.nodeName
@@ -18,4 +19,4 @@ resource "aws_eks_node_group" "node" {
     max_unavailable = 1
   }
 
-}
+}*/

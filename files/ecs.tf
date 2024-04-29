@@ -1,8 +1,8 @@
 resource "aws_ecs_service" "ecs_service" {
-  name            = "restaurante-ecs-service"
-  cluster         = aws_ecs_cluster.ecs_cluster.id
-  task_definition = aws_ecs_task_definition.ecs_task_definition.arn
-  desired_count   = 1
+  name                = "restaurante-ecs-service"
+  cluster             = aws_ecs_cluster.ecs_cluster.id
+  task_definition     = aws_ecs_task_definition.ecs_task_definition.arn
+  desired_count       = 1
   scheduling_strategy = "REPLICA"
 
   network_configuration {
@@ -22,9 +22,6 @@ resource "aws_ecs_service" "ecs_service" {
   }
 
   force_new_deployment = true
-  placement_constraints {
-    type = "distinctInstance"
-  }
 
   deployment_controller {
     type = "ECS"
@@ -38,27 +35,27 @@ resource "aws_ecs_service" "ecs_service" {
   }
 
 }
-resource "aws_appautoscaling_target" "my_scaling_target" {
-  max_capacity       = 4
+resource "aws_appautoscaling_target" "ecs_target" {
+  max_capacity       = 5
   min_capacity       = 1
-  resource_id        = aws_ecs_service.ecs_service.id
+  resource_id        = "service/${aws_ecs_cluster.ecs_cluster.name}/${aws_ecs_service.ecs_service.name}"
   scalable_dimension = "ecs:service:DesiredCount"
-  service_namespace = "ecs"
+  service_namespace  = "ecs"
 }
 
 resource "aws_appautoscaling_policy" "my_scaling_policy" {
   name               = "meu-scaling-policy"
   policy_type        = "TargetTrackingScaling"
-  resource_id        = aws_appautoscaling_target.my_scaling_target.resource_id
-  scalable_dimension = aws_appautoscaling_target.my_scaling_target.scalable_dimension
-  service_namespace  = aws_appautoscaling_target.my_scaling_target.service_namespace
+  resource_id        = aws_appautoscaling_target.ecs_target.resource_id
+  scalable_dimension = aws_appautoscaling_target.ecs_target.scalable_dimension
+  service_namespace  = aws_appautoscaling_target.ecs_target.service_namespace
 
   target_tracking_scaling_policy_configuration {
     predefined_metric_specification {
-      predefined_metric_type = "ECSServiceAverageCPUUtilization"
+      predefined_metric_type = "ECSServiceAverageMemoryUtilization"
     }
-    scale_in_cooldown  = 60
-    scale_out_cooldown = 60
+    scale_in_cooldown  = 300
+    scale_out_cooldown = 300
     target_value       = 70
   }
 }

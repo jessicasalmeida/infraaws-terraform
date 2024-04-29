@@ -5,6 +5,7 @@ resource "aws_ecs_task_definition" "ecs_task_definition" {
   requires_compatibilities = ["FARGATE"]
   cpu                = 256
   memory             = 512
+
   runtime_platform {
     operating_system_family = "LINUX"
     cpu_architecture        = "X86_64"
