@@ -54,8 +54,8 @@ resource "aws_appautoscaling_policy" "my_scaling_policy" {
     predefined_metric_specification {
       predefined_metric_type = "ECSServiceAverageMemoryUtilization"
     }
-    scale_in_cooldown  = 300
-    scale_out_cooldown = 300
+    scale_in_cooldown  = 1024
+    scale_out_cooldown = 1024
     target_value       = 70
   }
 }

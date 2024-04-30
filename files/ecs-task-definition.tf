@@ -3,8 +3,8 @@ resource "aws_ecs_task_definition" "ecs_task_definition" {
   network_mode       = "awsvpc"
   execution_role_arn = var.labRole
   requires_compatibilities = ["FARGATE"]
-  cpu                = 256
-  memory             = 512
+  cpu                = 512
+  memory             = 1024
 
   runtime_platform {
     operating_system_family = "LINUX"
@@ -14,8 +14,8 @@ resource "aws_ecs_task_definition" "ecs_task_definition" {
     {
       name      = "restaurante"
       image     = "590183826114.dkr.ecr.us-east-1.amazonaws.com/restaurante:latest"
-      cpu       = 256
-      memory    = 512
+      cpu       = 512
+      memory    = 1024
       essential = true
       portMappings = [
         {
