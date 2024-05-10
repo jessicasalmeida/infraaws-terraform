@@ -17,7 +17,7 @@ resource "aws_ecs_service" "ecs_service" {
 
   load_balancer {
     container_name   = "restaurante"
-    container_port   = "3000"
+    container_port   = "8000"
     target_group_arn = aws_alb_target_group.default-target-group.arn
   }
 

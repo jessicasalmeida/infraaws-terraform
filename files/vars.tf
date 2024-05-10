@@ -1,13 +1,29 @@
+variable "userPoolClientId" {
+  default = "4e69npdo4oi4rtkjo7ir2gqf3k"
+}
+
+variable "userPoolEndPoint" {
+  default = "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_rNjKaVPCB"
+}
+
+variable "lambdaLoginArn" {
+  default = "arn:aws:lambda:us-east-1:094091489187:function:login"
+}
+
 variable "labRole" {
-  default = "arn:aws:iam::590183826114:role/LabRole"
+  default = "arn:aws:iam::094091489187:role/LabRole"
 }
 
 variable "principalArn" {
-  default = "arn:aws:iam::590183826114:role/voclabs"
+    default = "arn:aws:iam::094091489187:role/voclabs"
 }
 
 variable "ecsTaskDefinition" {
-  default = "arn:aws:iam::590183826114:role/ecsTaskExecutionRole"
+  default = "arn:aws:iam::094091489187:role/ecsTaskExecutionRole"
+}
+
+variable "mongodb" {
+  default = "mongodb+srv://admin:fiap_fase3@restaurante-prod-cluste.tcrs6sj.mongodb.net/?retryWrites=true&w=majority&appName=restaurante-prod-cluster"
 }
 
 variable "policyArn" {

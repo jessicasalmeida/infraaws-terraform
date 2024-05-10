@@ -19,12 +19,40 @@ resource "aws_apigatewayv2_stage" "example" {
   auto_deploy = true
 }
 
-resource "aws_apigatewayv2_route" "example" {
+resource "aws_apigatewayv2_route" "eksRoute" {
   api_id    = aws_apigatewayv2_api.main.id
   route_key = "ANY /{proxy+}"
   target = "integrations/${aws_apigatewayv2_integration.albintegration.id}"
+
+  authorization_type = "JWT"
+  authorizer_id = aws_apigatewayv2_authorizer.authorizer.id
 }
 
+resource "aws_apigatewayv2_authorizer" "authorizer" {
+  api_id                            = aws_apigatewayv2_api.main.id
+  authorizer_type                   = "JWT"
+  identity_sources                  = ["$request.header.Authorization"]
+  name                              = "restaurante-authorizer"
+  jwt_configuration {
+    audience = [var.userPoolClientId]
+    issuer = var.userPoolEndPoint
+  }
+}
+
+
+resource "aws_apigatewayv2_integration" "loginIntegration" {
+  api_id           = aws_apigatewayv2_api.main.id
+  integration_type = "AWS_PROXY"
+  connection_type    = "INTERNET"
+  integration_method = "POST"
+  integration_uri  = var.lambdaLoginArn
+}
+
+resource "aws_apigatewayv2_route" "loginRoute" {
+  api_id    = aws_apigatewayv2_api.main.id
+  route_key = "POST /login"
+  target = "integrations/${aws_apigatewayv2_integration.loginIntegration.id}"
+}
 
 resource "aws_apigatewayv2_integration" "albintegration" {
   api_id           = aws_apigatewayv2_api.main.id
