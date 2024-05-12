@@ -10,7 +10,7 @@ resource "aws_lb" "restaurante-lb" {
 # Target group
 resource "aws_alb_target_group" "default-target-group" {
   name     = "${var.eks_instance_name}-tg"
-  port     = 80
+  port     = 8000
   protocol = "HTTP"
   vpc_id   = aws_vpc.restaurante-vpc.id
   target_type = "ip"

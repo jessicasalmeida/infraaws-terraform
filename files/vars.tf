@@ -1,9 +1,9 @@
 variable "userPoolClientId" {
-  default = "4e69npdo4oi4rtkjo7ir2gqf3k"
+  default = "15v01j7tu96v9t161o29o4qh9b"
 }
 
 variable "userPoolEndPoint" {
-  default = "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_rNjKaVPCB"
+  default = "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_nabsWhG3r"
 }
 
 variable "lambdaLoginArn" {
@@ -23,7 +23,7 @@ variable "ecsTaskDefinition" {
 }
 
 variable "mongodb" {
-  default = "mongodb+srv://admin:fiap_fase3@restaurante-prod-cluste.tcrs6sj.mongodb.net/?retryWrites=true&w=majority&appName=restaurante-prod-cluster"
+  default = "mongodb+srv://admin:fiap_fase3@restaurante-prod-cluste.rkutlhb.mongodb.net/?retryWrites=true&w=majority&appName=restaurante-prod-cluster"
 }
 
 variable "policyArn" {
