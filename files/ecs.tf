@@ -36,9 +36,13 @@ resource "aws_ecs_service" "ecs_service" {
 
 }
 resource "aws_appautoscaling_target" "ecs_target" {
-  max_capacity       = 5
-  min_capacity       = 1
-  resource_id        = "service/${aws_ecs_cluster.ecs_cluster.name}/${aws_ecs_service.ecs_service.name}"
+  max_capacity = 5
+  min_capacity = 1
+  resource_id  = "service/${aws_ecs_cluster.ecs_cluster.name}/${aws_ecs_service.ecs_service.name}"
+  scalable_dimension = "ecs:service:DesiredCount"
+  service_namespace  = "ecs"
+
+}
 
 resource "aws_appautoscaling_policy" "my_scaling_policy" {
   name               = "meu-scaling-policy"
