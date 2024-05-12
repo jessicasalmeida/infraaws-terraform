@@ -1,9 +1,9 @@
 variable "userPoolClientId" {
-  default = "15v01j7tu96v9t161o29o4qh9b"
+  default = "21e960s9phu9ukmr19sk2c14mf"
 }
 
 variable "userPoolEndPoint" {
-  default = "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_nabsWhG3r"
+  default = "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_mbcv3kDwf"
 }
 
 variable "lambdaLoginArn" {
