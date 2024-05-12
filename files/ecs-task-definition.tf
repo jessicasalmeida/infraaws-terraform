@@ -65,5 +65,4 @@ resource "aws_ecs_task_definition" "ecs_task_definition" {
       ]
     }
   ])
-  depends_on = [null_resource.push_image_to_ecr]
 }
