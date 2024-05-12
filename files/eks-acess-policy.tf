@@ -1,5 +1,5 @@
 resource "aws_eks_access_policy_association" "example" {
-  cluster_name  = aws_eks_cluster.fiap.name
+  cluster_name  = aws_eks_cluster.restaurante-cluster.name
   policy_arn    = var.policyArn
   principal_arn = var.principalArn
 
