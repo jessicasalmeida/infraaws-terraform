@@ -1,13 +1,13 @@
-variable "userPoolClientId" {
-  default = "21e960s9phu9ukmr19sk2c14mf"
+variable "access_key" {
+  default     = "ASIARL2CKF6RZJXA7JWB"
 }
 
-variable "userPoolEndPoint" {
-  default = "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_mbcv3kDwf"
+variable "secret_key" {
+  default     = "tJCOIVTdp0TcYiz8YAJTjkgVl3fqJRYg0Cu6w0SJ"
 }
 
-variable "lambdaLoginArn" {
-  default = "arn:aws:lambda:us-east-1:094091489187:function:login"
+variable "token" {
+  default = "IQoJb3JpZ2luX2VjEOT//////////wEaCXVzLXdlc3QtMiJGMEQCIFxh185WaCjh7Avw7cjVYPNHpUujrxfWL7Ylem1DqSP1AiAQWxs8AqI6GgECo/OBn4ee7NYy80e8LV+8xxamYwLGeiq+Agit//////////8BEAIaDDA5NDA5MTQ4OTE4NyIM/oR0JH0tLe+li3/3KpICO0GqtZ59EWEpkyEtZi76CUU2+/dwgAO0JaOmL86Zz0jYyvpjm8k4FFsq3NPYDgDWLi0K5ELMStwBippfwDkDcjp594jLUhA3BEacKFRZOi2XE2Vw1YDJMJuJjRqlNPJkJUwNzYBOyiNshWqJDsplkyifUN5tD+HzL5sUXqFIZ0h6IuvELeVyoJ5OcbX1e3EQhMAJ61PHCS/alWjF+oUiPkZlRclg1yycw/mnVKez1QfuJL7B4gZeX+/DbAGi6yw6HDW45q5HF3MG1QjTJ4YX7DaNWztghYoh5J7/Opb57A/PrxsULYdsalCQehpvzDlqX9MvfPy3mylD/g5+xtqyn6XBLjpkKwWRaTicUYrILT4D/DCs2tC0BjqeAa7gK4iltEJt5XuGaJABlnvjtEENhtXqbdHDmB+ewckgqrtZ2d/01dNUzg0EZy1LtrOAXhghfPctwUoXwiC4WqCN40dz4thnMGEfmn05SXSMwKAlALi/GBbtUV0Q2+mzh/apvM8Vuj4GohbPJX2GmWymLY40vJ8su0WVBd+XdpSBwE3oezqz70Xv9K83bAtU6eH7VeZ+Eb3YwEAiEPBC"
 }
 
 variable "labRole" {

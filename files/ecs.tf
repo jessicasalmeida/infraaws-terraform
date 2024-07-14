@@ -1,5 +1,5 @@
 resource "aws_ecs_service" "ecs_service" {
-  name                = "restaurante-ecs-service"
+  name                = "restaurante2-ecs-service"
   cluster             = aws_ecs_cluster.ecs_cluster.id
   task_definition     = aws_ecs_task_definition.ecs_task_definition.arn
   desired_count       = 1
@@ -7,7 +7,7 @@ resource "aws_ecs_service" "ecs_service" {
 
   network_configuration {
     subnets         = [aws_subnet.private-subnet-1.id, aws_subnet.private-subnet-2.id]
-    security_groups = [aws_security_group.eks.id]
+    security_groups = [aws_security_group.restaurante_sg.id]
   }
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
@@ -16,7 +16,7 @@ resource "aws_ecs_service" "ecs_service" {
   }
 
   load_balancer {
-    container_name   = "restaurante"
+    container_name   = "cart"
     container_port   = "8000"
     target_group_arn = aws_alb_target_group.default-target-group.arn
   }
@@ -31,7 +31,7 @@ resource "aws_ecs_service" "ecs_service" {
   }
 
   triggers = {
-    redeployment = timestamp()
+    redeployment = plantimestamp()
   }
 
 }
@@ -55,8 +55,8 @@ resource "aws_appautoscaling_policy" "my_scaling_policy" {
     predefined_metric_specification {
       predefined_metric_type = "ECSServiceAverageMemoryUtilization"
     }
-    scale_in_cooldown  = 1024
-    scale_out_cooldown = 1024
+    scale_in_cooldown  = 2048
+    scale_out_cooldown = 2048
     target_value       = 70
   }
 }

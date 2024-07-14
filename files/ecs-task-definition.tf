@@ -3,8 +3,8 @@ resource "aws_ecs_task_definition" "ecs_task_definition" {
   network_mode             = "awsvpc"
   execution_role_arn       = var.labRole
   requires_compatibilities = ["FARGATE"]
-  cpu                      = 512
-  memory                   = 1024
+  cpu                      = 1024
+  memory                   = 2048
 
   runtime_platform {
     operating_system_family = "LINUX"
@@ -12,10 +12,10 @@ resource "aws_ecs_task_definition" "ecs_task_definition" {
   }
   container_definitions = jsonencode([
     {
-      name         = "restaurante"
-      image        = aws_ecr_repository.repository_terraform.repository_url
-      cpu          = 512
-      memory       = 1024
+      name         = "cart"
+      image        = "094091489187.dkr.ecr.us-east-1.amazonaws.com/cart"
+      cpu          = 1024
+      memory       = 2048
       essential    = true
       portMappings = [
         {
@@ -36,31 +36,27 @@ resource "aws_ecs_task_definition" "ecs_task_definition" {
       environment = [
         {
           name  = "DB_CONN_STRING"
-          value = var.mongodb
+          value = aws_db_instance.cart_db.address
         },
         {
           name  = "DB_NAME"
-          value = "restaurante_db"
+          value = "postgres"
         },
         {
-          name  = "CART_COLLECTION_NAME"
-          value = "cart"
+          name  = "DB_USER"
+          value = "postgres"
         },
         {
-          name  = "ORDER_COLLECTION_NAME"
-          value = "order"
+          name  = "DB_PASSWORD"
+          value = "fiapfase4!"
         },
         {
-          name  = "PRODUCT_COLLECTION_NAME"
-          value = "produtos"
-        },
-        {
-          name  = "USER_COLLECTION_NAME"
-          value = "user"
+          name  = "ORDER_SERVER"
+          value = "http://${aws_lb.admin-lb.dns_name}"
         },
         {
           name  = "URL"
-          value = aws_apigatewayv2_stage.example.invoke_url
+          value = aws_apigatewayv2_api.main.api_endpoint
         }
       ]
     }
