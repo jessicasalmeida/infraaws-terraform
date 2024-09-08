@@ -1,13 +1,13 @@
 variable "access_key" {
-  default = "XX"
+  default = "abc"
 }
 
 variable "secret_key" {
-  default = "XX"
+  default = "abc"
 }
 
 variable "token" {
-  default = "XX"
+  default = "abc"
 }
 
 variable "labRole" {
