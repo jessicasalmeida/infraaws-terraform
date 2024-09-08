@@ -1,6 +1,6 @@
 resource "aws_apigatewayv2_vpc_link" "main" {
   name        = "restaurante_vpclink"
-  security_group_ids = [aws_security_group.load-balancer.id]
+  security_group_ids = [aws_security_group.load-balancer-restaurante-sg.id]
   subnet_ids         = [aws_subnet.private-subnet-1.id, aws_subnet.private-subnet-2.id]
 
   tags = {
@@ -40,7 +40,7 @@ resource "aws_apigatewayv2_integration" "albintegration" {
 
 resource "aws_apigatewayv2_vpc_link" "order_vpclink" {
   name        = "order_vpclink"
-  security_group_ids = [aws_security_group.load-balancer_admin.id]
+  security_group_ids = [aws_security_group.load-balancer-admin-sg.id]
   subnet_ids         = [aws_subnet.private-subnet-1.id, aws_subnet.private-subnet-2.id]
 
   tags = {

@@ -1,9 +1,9 @@
 # Load Balancer
 resource "aws_lb" "restaurante-lb" {
-  name               = "${var.eks_instance_name}-lb"
+  name               = "${var.eks_instance_name}-lb-restaurante"
   load_balancer_type = "application"
   internal           = true
-  security_groups    = [aws_security_group.load-balancer.id]
+  security_groups    = [aws_security_group.load-balancer-restaurante-sg.id]
   subnets            = [aws_subnet.public-subnet-1.id, aws_subnet.public-subnet-2.id]
 }
 

@@ -1,7 +1,7 @@
 resource "aws_ecs_service" "ecs_service" {
   name                = "restaurante2-ecs-service"
   cluster             = aws_ecs_cluster.ecs_cluster.id
-  task_definition     = aws_ecs_task_definition.ecs_task_definition.arn
+  task_definition     = aws_ecs_task_definition.ecs_restaurante_task_definition.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
 
@@ -16,7 +16,7 @@ resource "aws_ecs_service" "ecs_service" {
   }
 
   load_balancer {
-    container_name   = "cart"
+    container_name   = "restaurante"
     container_port   = "8000"
     target_group_arn = aws_alb_target_group.default-target-group.arn
   }
