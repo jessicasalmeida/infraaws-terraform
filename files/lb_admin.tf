@@ -3,7 +3,7 @@ resource "aws_lb" "admin-lb" {
   name               = "${var.eks_instance_name}-admin-lb"
   load_balancer_type = "application"
   internal           = true
-  security_groups    = [aws_security_group.load-balancer_admin.id]
+  security_groups    = [aws_security_group.load-balancer-admin-sg.id]
   subnets            = [aws_subnet.public-subnet-1.id, aws_subnet.public-subnet-2.id]
 }
 

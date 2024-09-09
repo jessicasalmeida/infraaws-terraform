@@ -1,25 +1,25 @@
 variable "access_key" {
-  default     = "ASIARL2CKF6RZJXA7JWB"
+  default = "abc"
 }
 
 variable "secret_key" {
-  default     = "tJCOIVTdp0TcYiz8YAJTjkgVl3fqJRYg0Cu6w0SJ"
+  default = "abc"
 }
 
 variable "token" {
-  default = "IQoJb3JpZ2luX2VjEOT//////////wEaCXVzLXdlc3QtMiJGMEQCIFxh185WaCjh7Avw7cjVYPNHpUujrxfWL7Ylem1DqSP1AiAQWxs8AqI6GgECo/OBn4ee7NYy80e8LV+8xxamYwLGeiq+Agit//////////8BEAIaDDA5NDA5MTQ4OTE4NyIM/oR0JH0tLe+li3/3KpICO0GqtZ59EWEpkyEtZi76CUU2+/dwgAO0JaOmL86Zz0jYyvpjm8k4FFsq3NPYDgDWLi0K5ELMStwBippfwDkDcjp594jLUhA3BEacKFRZOi2XE2Vw1YDJMJuJjRqlNPJkJUwNzYBOyiNshWqJDsplkyifUN5tD+HzL5sUXqFIZ0h6IuvELeVyoJ5OcbX1e3EQhMAJ61PHCS/alWjF+oUiPkZlRclg1yycw/mnVKez1QfuJL7B4gZeX+/DbAGi6yw6HDW45q5HF3MG1QjTJ4YX7DaNWztghYoh5J7/Opb57A/PrxsULYdsalCQehpvzDlqX9MvfPy3mylD/g5+xtqyn6XBLjpkKwWRaTicUYrILT4D/DCs2tC0BjqeAa7gK4iltEJt5XuGaJABlnvjtEENhtXqbdHDmB+ewckgqrtZ2d/01dNUzg0EZy1LtrOAXhghfPctwUoXwiC4WqCN40dz4thnMGEfmn05SXSMwKAlALi/GBbtUV0Q2+mzh/apvM8Vuj4GohbPJX2GmWymLY40vJ8su0WVBd+XdpSBwE3oezqz70Xv9K83bAtU6eH7VeZ+Eb3YwEAiEPBC"
+  default = "abc"
 }
 
 variable "labRole" {
-  default = "arn:aws:iam::094091489187:role/LabRole"
+  default = "arn:aws:iam::XX:role/LabRole"
 }
 
 variable "principalArn" {
-    default = "arn:aws:iam::094091489187:role/voclabs"
+  default = "arn:aws:iam::XX:role/voclabs"
 }
 
 variable "ecsTaskDefinition" {
-  default = "arn:aws:iam::094091489187:role/ecsTaskExecutionRole"
+  default = "arn:aws:iam::XX:role/ecsTaskExecutionRole"
 }
 
 variable "mongodb" {
@@ -42,7 +42,7 @@ variable "nodeName" {
 }
 
 variable "region" {
-  default     = "us-east-1"
+  default = "us-east-1"
 }
 
 # networking
@@ -80,7 +80,7 @@ variable "health_check_path" {
 
 variable "amis" {
   description = "Which AMI to spawn."
-  default = {
+  default     = {
     us-east-1 = "ami-05fa00d4c63e32376"
     us-east-2 = "ami-0568773882d492fc8"
   }
@@ -115,4 +115,8 @@ variable "autoscale_max" {
 variable "autoscale_desired" {
   description = "Desired autoscale (number of EKS)"
   default     = "1"
+}
+variable "queue_con" {
+  description = "QUEUE CONNECTION"
+  default = "amqp://guest:guest@localhost:5672"
 }

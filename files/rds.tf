@@ -7,7 +7,7 @@ resource "aws_db_instance" "cart_db" {
   db_name              = "postgres"
   username             = "postgres"
   password             = "fiapfase4!"
-  parameter_group_name = "teste"
+  parameter_group_name = aws_db_parameter_group.default.name
   port = "5432"
   skip_final_snapshot  = true
   apply_immediately = true
